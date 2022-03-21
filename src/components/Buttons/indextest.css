@@ -1,0 +1,27 @@
+.firstblock {
+  width: 600px;
+  height: 300px;
+  margin: auto;
+  border: solid 2px black;
+}
+
+.btndop {
+  float: right;
+}
+
+.secondblock {
+  width: 600px;
+  margin: auto;
+}
+
+.rulesdisplay {
+  width: 280px;
+  height: 200px;
+  border: solid 2px black;
+  display: inline-block;
+}
+
+.rules {
+  width: 280px;
+  float: right;
+}
