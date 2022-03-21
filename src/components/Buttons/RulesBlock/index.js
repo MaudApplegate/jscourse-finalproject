@@ -1,49 +1,34 @@
 import { useState } from 'react';
-import { InputForm } from '../InputForm';
+import { useDispatch, useSelector } from 'react-redux';
+import { ACTION_INPUT_ON } from '../../../ducks/stylebutton/actions';
+import { isInputFormOpenedSelector } from '../../../ducks/stylebutton/selectors';
+import { InputForm } from './InputForm';
 import { RulesDisplay } from './RulesDisplay';
 import { RulesList } from './RulesList';
 
 export const RulesBlock = () => {
-  const [isInputOpened, setInputOpened] = useState(false);
+  // const [isInputOpened, setInputOpened] = useState(false);
+
+  const dispatch = useDispatch();
+  const isInputOpened = useSelector(isInputFormOpenedSelector);
 
   const addRuleHandler = () => {
-    setInputOpened(true);
-  };
-
-  const closeInputHandler = () => {
-    setInputOpened(false);
-  };
-
-  const [inputData, setInputData] = useState([]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const a = e.target.elements.stylename.value;
-    const b = e.target.elements.stylevalue.value;
-
-    setInputData([...inputData, { stylename: a, stylevalue: b }]);
+    // setInputOpened(true);
+    dispatch(ACTION_INPUT_ON());
   };
 
   return (
     <div className="secondblock">
       <div className="rulesdisplay">
-        <RulesDisplay data={inputData} />
+        <RulesDisplay />
       </div>
       <div className="rules">
-        <RulesList data={inputData} deletetest={setInputData} />
+        {/* <RulesList data={inputData} deletetest={setInputData} /> */}
+        <RulesList />
         <button onClick={addRuleHandler}>Add rule</button>
         <button>Submit</button>
       </div>
-      {isInputOpened && (
-        <form onSubmit={handleSubmit}>
-          <button onClick={closeInputHandler}>x</button>
-          <input placeholder="style name" name="stylename" />
-          <label> : </label>
-          <input placeholder="style value" name="stylevalue" />
-          <button>Add style</button>
-        </form>
-      )}
+      {isInputOpened && <InputForm />}
     </div>
   );
 };
