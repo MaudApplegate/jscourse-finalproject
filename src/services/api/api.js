@@ -8,6 +8,6 @@ export const getButtons = async () => {
   return buttonList(response);
 };
 
-export const pushButton = async () => {
-  await API.post('/buttons');
+export const pushButton = async (data) => {
+  await API.post('/buttons', data);
 };

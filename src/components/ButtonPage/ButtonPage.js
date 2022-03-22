@@ -1,6 +1,6 @@
 import ButtonsDoneBlock from './ButtonsDoneBlock/ButtonsDoneBlock';
 import './indextest.css';
-import { RulesBlock } from './RulesBlock/RulesBlock';
+import RulesBlock from './RulesBlock/RulesBlock';
 
 const ButtonPage = () => {
   return (
