@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
 import BlockPage from './components/BlockPage';
-import ButtonPage from './components/ButtonPage';
+import ButtonPage from './components/ButtonPage/ButtonPage';
 import InputPage from './components/InputPage';
 
 function App() {

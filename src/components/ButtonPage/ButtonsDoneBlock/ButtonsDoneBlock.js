@@ -8,19 +8,17 @@ const ButtonStyled = styled.button`
   ${(props) => props.propsstyle}
 `;
 
-const CreatedButtonBlock = ({ actionGetData, buttonsData }) => {
+const ButtonsDoneBlock = ({ actionGetList, buttonsList }) => {
   useEffect(() => {
-    actionGetData();
+    actionGetList();
   }, []);
 
   return (
     <div className="firstblock">
       <ul>
-        {buttonsData.length === 0 && <h2>No content...</h2>}
-        {buttonsData.map((item) => (
+        {buttonsList.length === 0 && <h2>No content...</h2>}
+        {buttonsList.map((item) => (
           <li key={item.id}>
-            {' '}
-            {console.log(item)}
             <ButtonStyled propsstyle={item}>Example</ButtonStyled>
           </li>
         ))}
@@ -30,13 +28,13 @@ const CreatedButtonBlock = ({ actionGetData, buttonsData }) => {
 };
 
 const mapStateToProps = (state) => ({
-  buttonsData: buttonsListSelector(state),
+  buttonsList: buttonsListSelector(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  actionGetData: () => {
+  actionGetList: () => {
     dispatch(getButtonsAction());
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreatedButtonBlock);
+export default connect(mapStateToProps, mapDispatchToProps)(ButtonsDoneBlock);

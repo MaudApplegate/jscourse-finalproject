@@ -22,7 +22,6 @@ export const getButtonsAction = () => async (dispatch) => {
   dispatch(ACTION_GET_BUTTONS_LOADING());
   try {
     const data = await getButtons();
-    console.log(data);
     dispatch(ACTION_GET_BUTTONS_SUCCEED(data));
   } catch (error) {
     dispatch(ACTION_GET_BUTTONS_FAILED(error));

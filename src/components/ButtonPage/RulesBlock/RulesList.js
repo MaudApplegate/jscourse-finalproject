@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { ACTION_DELETE_RULE } from '../../../../ducks/buttonRules/actions';
-import { stylelistSelector } from '../../../../ducks/buttonRules/selectors';
+import { ACTION_DELETE_RULE } from '../../../ducks/buttonRules/actions';
+import { stylelistSelector } from '../../../ducks/buttonRules/selectors';
 
 export const RulesList = () => {
   const list = useSelector(stylelistSelector);
@@ -22,8 +22,8 @@ export const RulesList = () => {
 
 export const DeleteButton = ({ id }) => {
   const dispatch = useDispatch();
-  const handlerDelete = () => {
+  const deleteHandler = () => {
     dispatch(ACTION_DELETE_RULE(id));
   };
-  return <button onClick={handlerDelete}>x</button>;
+  return <button onClick={deleteHandler}>x</button>;
 };

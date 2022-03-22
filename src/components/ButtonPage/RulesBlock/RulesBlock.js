@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { ACTION_INPUT_ON } from '../../../ducks/buttonRules/actions';
 import { isInputFormOpenedSelector } from '../../../ducks/buttonRules/selectors';
-import { InputForm } from './InputForm';
+import { InputForm } from './InputRules';
 import { RulesDisplay } from './RulesDisplay';
 import { RulesList } from './RulesList';
 

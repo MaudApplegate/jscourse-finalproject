@@ -16,7 +16,6 @@ export const buttonsListReducer = (state = initialButtonListState, action) => {
       return { ...state, isLoading: true };
     }
     case GET_BUTTONS_SUCCEED: {
-      console.log(action.payload);
       return { ...state, data: action.payload, isLoading: false };
     }
     case GET_BUTTONS_FAILED: {

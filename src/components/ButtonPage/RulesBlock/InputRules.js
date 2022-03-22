@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import {
   ACTION_INPUT_OFF,
   ACTION_SET_RULE,
-} from '../../../../ducks/buttonRules/actions';
+} from '../../../ducks/buttonRules/actions';
 
 export const InputForm = () => {
   const dispatch = useDispatch();
@@ -24,7 +24,6 @@ export const InputForm = () => {
         id: nextId,
         stylename: name,
         stylevalue: value,
-        stringcss: `${name}:${value}`,
       })
     );
     dispatch(ACTION_INPUT_OFF());
