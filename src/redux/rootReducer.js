@@ -1,7 +1,9 @@
-import { buttonReducer } from '../ducks/stylebutton/reducer';
+import { buttonsListReducer } from '../ducks/buttonList/reducer';
+import { buttonReducer } from '../ducks/buttonRules/reducer';
 
 const rootReducer = {
-  button: buttonReducer,
+  buttonRules: buttonReducer,
+  buttonList: buttonsListReducer,
 };
 
 export default rootReducer;

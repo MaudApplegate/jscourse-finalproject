@@ -1,7 +1,9 @@
-import { initialButtonState } from '../ducks/stylebutton/reducer';
+import { initialButtonListState } from '../ducks/buttonList/reducer';
+import { initialButtonState } from '../ducks/buttonRules/reducer';
 
 const initialState = {
-  button: initialButtonState,
+  buttonRules: initialButtonState,
+  buttonList: initialButtonListState,
 };
 
 export default initialState;

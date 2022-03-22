@@ -1,21 +1,19 @@
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ACTION_INPUT_ON } from '../../../ducks/stylebutton/actions';
-import { isInputFormOpenedSelector } from '../../../ducks/stylebutton/selectors';
+import { ACTION_INPUT_ON } from '../../../ducks/buttonRules/actions';
+import { isInputFormOpenedSelector } from '../../../ducks/buttonRules/selectors';
 import { InputForm } from './InputForm';
 import { RulesDisplay } from './RulesDisplay';
 import { RulesList } from './RulesList';
 
 export const RulesBlock = () => {
-  // const [isInputOpened, setInputOpened] = useState(false);
-
   const dispatch = useDispatch();
   const isInputOpened = useSelector(isInputFormOpenedSelector);
 
   const addRuleHandler = () => {
-    // setInputOpened(true);
     dispatch(ACTION_INPUT_ON());
   };
+
+  const submitBtnHandler = () => {};
 
   return (
     <div className="secondblock">
@@ -23,10 +21,9 @@ export const RulesBlock = () => {
         <RulesDisplay />
       </div>
       <div className="rules">
-        {/* <RulesList data={inputData} deletetest={setInputData} /> */}
         <RulesList />
         <button onClick={addRuleHandler}>Add rule</button>
-        <button>Submit</button>
+        <button onClick={submitBtnHandler}>Submit</button>
       </div>
       {isInputOpened && <InputForm />}
     </div>

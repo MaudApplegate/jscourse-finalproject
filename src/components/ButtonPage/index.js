@@ -1,4 +1,4 @@
-import { CreatedButtonBlock } from './CreatedButtonBlock/index';
+import CreatedButtonBlock from './CreatedButtonBlock/index';
 import './indextest.css';
 import { RulesBlock } from './RulesBlock';
 

@@ -6,6 +6,7 @@ export const ACTION_SET_RULE = (payload) => ({
 });
 
 export const DELETE_RULE = 'DELETE_RULE';
+
 export const ACTION_DELETE_RULE = (payload) => ({
   type: DELETE_RULE,
   payload,

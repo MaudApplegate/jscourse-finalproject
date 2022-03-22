@@ -4,19 +4,15 @@ import { useDispatch } from 'react-redux';
 import {
   ACTION_INPUT_OFF,
   ACTION_SET_RULE,
-} from '../../../../ducks/stylebutton/actions';
+} from '../../../../ducks/buttonRules/actions';
 
 export const InputForm = () => {
   const dispatch = useDispatch();
-  // let nextRuleId = 0;
-
-  const [testId] = useId();
+  const [nextId] = useId();
 
   const closeInputHandler = () => {
     dispatch(ACTION_INPUT_OFF());
   };
-
-  // const [inputData, setInputData] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,16 +21,13 @@ export const InputForm = () => {
     const value = e.target.elements.stylevalue.value;
     dispatch(
       ACTION_SET_RULE({
-        // id: nextRuleId++,
-        id: testId,
+        id: nextId,
         stylename: name,
         stylevalue: value,
-        stringcss: `${name}:${value};`,
+        stringcss: `${name}:${value}`,
       })
     );
     dispatch(ACTION_INPUT_OFF());
-
-    // setInputData([...inputData, { stylename: a, stylevalue: b }]);
   };
 
   return (
