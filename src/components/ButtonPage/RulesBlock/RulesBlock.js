@@ -1,4 +1,3 @@
-// import { useState } from 'react';
 import { useId } from 'react-id-generator';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { pushButtonAction } from '../../../ducks/buttonPush/actions';
@@ -12,53 +11,26 @@ import { InputForm } from './InputRules';
 import { RulesDisplay } from './RulesDisplay';
 import { RulesList } from './RulesList';
 
-const RulesBlock = ({ testState, actiontest }) => {
+const RulesBlock = ({ buttonRules, actionPushButton }) => {
   const dispatch = useDispatch();
   const isInputOpened = useSelector(isInputFormOpenedSelector);
 
   const addRuleHandler = () => {
     dispatch(ACTION_INPUT_ON());
-    // console.log(stylelist);
   };
-
-  // const [buttonToPost, setButtonToPost] = useState({ id: '', name: 'Button' });
 
   const [nextId] = useId();
 
-  // const stylelist = useSelector(stylelistSelector);
-
   const submitBtnHandler = () => {
-    const style = {};
+    const buttonToPush = {};
 
-    testState.map((i) => {
-      style.id = nextId;
-      style.name = 'Example';
-      style[i.stylename] = i.stylevalue;
+    buttonRules.map((i) => {
+      buttonToPush.id = nextId;
+      buttonToPush.name = 'Example';
+      buttonToPush[i.stylename] = i.stylevalue;
     });
-    console.log(style);
 
-    actiontest(style);
-
-    //  dispatch(pushButtonAction(style));
-
-    // setButtonToPost({ ...buttonToPost, id: nextId });
-    // console.log(buttonToPost);
-
-    // stylelist.map((i) => {
-    //   setButtonToPost({ ...buttonToPost, [i.stylename]: i.stylevalue });
-    // });
-    // console.log(buttonToPost);
-
-    // stylelist.map((i) => {
-    //   setButtonToPost({
-    //     ...buttonToPost,
-    //     id: nextId,
-    //     [i.stylename]: i.stylevalue,
-    //   });
-    // });
-
-    // dispatch(pushButtonAction(buttonToPost));
-    // console.log(buttonToPost);
+    actionPushButton(buttonToPush);
   };
 
   return (
@@ -77,11 +49,11 @@ const RulesBlock = ({ testState, actiontest }) => {
 };
 
 const mapStateToProps = (state) => ({
-  testState: stylelistSelector(state),
+  buttonRules: stylelistSelector(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  actiontest: (data) => {
+  actionPushButton: (data) => {
     dispatch(pushButtonAction(data));
   },
 });
