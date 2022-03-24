@@ -1,8 +1,9 @@
+import React from 'react';
 import ButtonsDoneBlock from './ButtonsDoneBlock/ButtonsDoneBlock';
 import './indextest.css';
 import RulesBlock from './RulesBlock/RulesBlock';
 
-const ButtonPage = () => {
+const ButtonPage: React.FC = () => {
   return (
     <div>
       <ButtonsDoneBlock />
