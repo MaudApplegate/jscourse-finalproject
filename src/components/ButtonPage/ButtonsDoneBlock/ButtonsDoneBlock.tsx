@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getButtonsAction } from '../../../ducks/buttonList/actions';
 import { buttonsListSelector } from '../../../ducks/buttonList/selectors';
-import styled from 'styled-components';
+
 import {
   ButtonList,
   ButtonListStateType,
@@ -11,24 +11,17 @@ import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { StateType } from '../../../redux/types';
 import { DeleteButton } from './DeleteButton';
-
-const ButtonStyled = styled.button<PropsStyled>`
-  ${(props: any) => props.propsstyle}
-`;
+import { ButtonDownLoad } from './Button';
 
 type Props = {
   buttonsList: ButtonList[];
   actionGetList: () => void;
 };
 
-type PropsStyled = { propsstyle: ButtonList };
-
 const ButtonsDoneBlock: React.FC<Props> = ({ buttonsList, actionGetList }) => {
   useEffect(() => {
     actionGetList();
   }, []);
-
-  const buttonChangeHandler = () => {};
 
   return (
     <div className="firstblock">
@@ -37,9 +30,7 @@ const ButtonsDoneBlock: React.FC<Props> = ({ buttonsList, actionGetList }) => {
         {buttonsList &&
           buttonsList.map((item: ButtonList) => (
             <li key={item.id}>
-              <ButtonStyled propsstyle={item} onClick={buttonChangeHandler}>
-                Example
-              </ButtonStyled>
+              <ButtonDownLoad id={item.id} propsstyle={item} />
               <DeleteButton id={item.id} />
             </li>
           ))}

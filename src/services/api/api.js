@@ -13,5 +13,9 @@ export const pushButton = async (data) => {
 };
 
 export const deleteButton = async (id) => {
-  await API.delete('/buttons', { data : id});
+  await API.delete('/buttons', { data: id });
+};
+
+export const patchButton = async (data) => {
+  await API.patch('/buttons', data);
 };

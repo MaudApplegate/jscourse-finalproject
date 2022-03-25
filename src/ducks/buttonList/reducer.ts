@@ -1,4 +1,5 @@
 import { DELETE_BUTTON, PUSH_BUTTON_FAILED, PUSH_BUTTON_SUCCEED } from '../buttonPush/actions';
+import { PATCH_BUTTON } from '../buttonPush/buttonPatchAction';
 
 import {
   GET_BUTTONS_FAILED,
@@ -31,6 +32,9 @@ export const buttonsListReducer = (state = initialButtonListState, action : Acti
       return { ...state, error: action.payload };
     }
     case DELETE_BUTTON: {
+      return {...state}
+    }
+    case PATCH_BUTTON: {
       return {...state}
     }
     default:

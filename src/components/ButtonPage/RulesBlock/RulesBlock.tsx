@@ -10,6 +10,7 @@ import {
   ACTION_INPUT_ON,
 } from '../../../ducks/buttonRules/actions';
 import {
+  globalIdSelector,
   isInputFormOpenedSelector,
   stylelistSelector,
 } from '../../../ducks/buttonRules/selectors';
@@ -21,6 +22,10 @@ import { ButtonList } from '../../../ducks/buttonList/types';
 import { InputForm } from './InputRules';
 import { RulesDisplay } from './RulesDisplay';
 import { RulesList } from './RulesList';
+import {
+  ACTION_PATCH_BUTTON,
+  patchButtonAction,
+} from '../../../ducks/buttonPush/buttonPatchAction';
 
 type Props = {
   buttonRules: StylelistType[];
@@ -28,6 +33,8 @@ type Props = {
   isInputOpened: boolean;
   actionInputOn: () => void;
   actionClearRuleField: () => void;
+  globalId: string | null;
+  actionPatchButton: any;
 };
 
 export type ButtonToPush = {
@@ -42,6 +49,8 @@ const RulesBlock: React.FC<Props> = ({
   actionPushButton,
   actionInputOn,
   actionClearRuleField,
+  globalId,
+  actionPatchButton,
 }) => {
   const addRuleHandler = () => {
     actionInputOn();
@@ -52,13 +61,20 @@ const RulesBlock: React.FC<Props> = ({
   const submitBtnHandler = () => {
     const buttonToPush: ButtonToPush = {};
 
+    buttonToPush.name = 'Example';
+
     buttonRules.map((i: StylelistType) => {
-      buttonToPush.id = nextId;
-      buttonToPush.name = 'Example';
       buttonToPush[i.stylename] = i.stylevalue;
     });
 
-    actionPushButton(buttonToPush);
+    if (globalId) {
+      buttonToPush.id = globalId;
+      actionPatchButton(buttonToPush);
+    } else {
+      buttonToPush.id = nextId;
+      actionPushButton(buttonToPush);
+    }
+
     actionClearRuleField();
   };
 
@@ -80,6 +96,7 @@ const RulesBlock: React.FC<Props> = ({
 const mapStateToProps = (state: StateType) => ({
   buttonRules: stylelistSelector(state),
   isInputOpened: isInputFormOpenedSelector(state),
+  globalId: globalIdSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<{}, void, Action>) => ({
@@ -91,6 +108,9 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<{}, void, Action>) => ({
   },
   actionClearRuleField: () => {
     dispatch(ACTION_CLEAR_RULE_FIELD());
+  },
+  actionPatchButton: (data: any) => {
+    dispatch(patchButtonAction(data));
   },
 });
 

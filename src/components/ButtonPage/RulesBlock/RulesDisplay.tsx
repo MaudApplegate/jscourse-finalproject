@@ -12,12 +12,15 @@ const ButtonStyled = styled.button<PropsStyled>`
 
 export const RulesDisplay: React.FC = () => {
   const stylelist = useSelector(stylelistSelector);
+  console.log(stylelist);
 
   const style: { [key: string]: string } = {};
 
   stylelist.map((i: StylelistType) => {
     style[i.stylename] = i.stylevalue;
   });
+
+  console.log(style);
 
   return <ButtonStyled propsstyle={style}>Example</ButtonStyled>;
 };
