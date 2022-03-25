@@ -9,8 +9,9 @@ export const ACTION_PUSH_BUTTON_SUCCEED = () => ({
 
 export const PUSH_BUTTON_FAILED = 'PUSH_BUTTON_FAILED';
 
-export const ACTION_PUSH_BUTTON_FAILED = () => ({
+export const ACTION_PUSH_BUTTON_FAILED = (error) => ({
   type: PUSH_BUTTON_FAILED,
+  error,
 });
 
 export const pushButtonAction = (data) => async (dispatch) => {

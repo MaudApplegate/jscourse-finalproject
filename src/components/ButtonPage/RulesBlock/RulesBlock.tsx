@@ -1,30 +1,53 @@
+import React from 'react';
+import { connect } from 'react-redux';
+import { Action } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
 import { useId } from 'react-id-generator';
-import { connect, useDispatch, useSelector } from 'react-redux';
-import { pushButtonAction } from '../../../ducks/buttonPush/actions';
 
+import { pushButtonAction } from '../../../ducks/buttonPush/actions';
 import { ACTION_INPUT_ON } from '../../../ducks/buttonRules/actions';
 import {
   isInputFormOpenedSelector,
   stylelistSelector,
 } from '../../../ducks/buttonRules/selectors';
+
+import { StateType } from '../../../redux/types';
+import { StylelistType } from '../../../ducks/buttonRules/types';
+import { ButtonList } from '../../../ducks/buttonList/types';
+
 import { InputForm } from './InputRules';
 import { RulesDisplay } from './RulesDisplay';
 import { RulesList } from './RulesList';
 
-const RulesBlock = ({ buttonRules, actionPushButton }) => {
-  const dispatch = useDispatch();
-  const isInputOpened = useSelector(isInputFormOpenedSelector);
+type Props = {
+  buttonRules: StylelistType[];
+  actionPushButton: any;
+  isInputOpened: boolean;
+  actionInputOn: () => void;
+};
 
+export type ButtonToPush = {
+  id?: string;
+  name?: string;
+  [key: string]: any;
+};
+
+const RulesBlock: React.FC<Props> = ({
+  buttonRules,
+  isInputOpened,
+  actionPushButton,
+  actionInputOn,
+}) => {
   const addRuleHandler = () => {
-    dispatch(ACTION_INPUT_ON());
+    actionInputOn();
   };
 
   const [nextId] = useId();
 
   const submitBtnHandler = () => {
-    const buttonToPush = {};
+    const buttonToPush: ButtonToPush = {};
 
-    buttonRules.map((i) => {
+    buttonRules.map((i: StylelistType) => {
       buttonToPush.id = nextId;
       buttonToPush.name = 'Example';
       buttonToPush[i.stylename] = i.stylevalue;
@@ -48,13 +71,17 @@ const RulesBlock = ({ buttonRules, actionPushButton }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: StateType) => ({
   buttonRules: stylelistSelector(state),
+  isInputOpened: isInputFormOpenedSelector(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  actionPushButton: (data) => {
+const mapDispatchToProps = (dispatch: ThunkDispatch<{}, void, Action>) => ({
+  actionPushButton: (data: ButtonList) => {
     dispatch(pushButtonAction(data));
+  },
+  actionInputOn: () => {
+    dispatch(ACTION_INPUT_ON());
   },
 });
 

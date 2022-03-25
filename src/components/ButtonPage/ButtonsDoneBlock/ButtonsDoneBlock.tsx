@@ -1,4 +1,4 @@
-import React, { Dispatch, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getButtonsAction } from '../../../ducks/buttonList/actions';
 import { buttonsListSelector } from '../../../ducks/buttonList/selectors';
@@ -20,7 +20,7 @@ type Props = {
   actionGetList: () => void;
 };
 
-type PropsStyled = ButtonList;
+type PropsStyled = { propsstyle: ButtonList };
 
 const ButtonsDoneBlock: React.FC<Props> = ({ buttonsList, actionGetList }) => {
   useEffect(() => {
@@ -32,7 +32,7 @@ const ButtonsDoneBlock: React.FC<Props> = ({ buttonsList, actionGetList }) => {
       <ul>
         {!buttonsList && <h2>No content...</h2>}
         {buttonsList &&
-          buttonsList.map((item: ButtonList | any) => (
+          buttonsList.map((item: ButtonList) => (
             <li key={item.id}>
               <ButtonStyled propsstyle={item}>Example</ButtonStyled>
             </li>

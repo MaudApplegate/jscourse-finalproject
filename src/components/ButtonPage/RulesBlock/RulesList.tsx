@@ -1,8 +1,9 @@
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ACTION_DELETE_RULE } from '../../../ducks/buttonRules/actions';
 import { stylelistSelector } from '../../../ducks/buttonRules/selectors';
 
-export const RulesList = () => {
+export const RulesList: React.FC = () => {
   const list = useSelector(stylelistSelector);
 
   return (
@@ -20,7 +21,11 @@ export const RulesList = () => {
   );
 };
 
-export const DeleteButton = ({ id }) => {
+type PropsDeleteBtn = {
+  id: string;
+};
+
+export const DeleteButton: React.FC<PropsDeleteBtn> = ({ id }) => {
   const dispatch = useDispatch();
   const deleteHandler = () => {
     dispatch(ACTION_DELETE_RULE(id));

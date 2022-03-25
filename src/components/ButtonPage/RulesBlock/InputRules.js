@@ -16,7 +16,6 @@ export const InputForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const name = e.target.elements.stylename.value;
     const value = e.target.elements.stylevalue.value;
     dispatch(
