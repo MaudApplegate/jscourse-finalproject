@@ -18,13 +18,18 @@ export type InputOffType = {
     payload?: null
 }
 
-
-export type ButtonRulesStateType =  {
-    stylelist: StylelistType[] | Array<any> ;
-    isInputFormOpened: boolean;
+export type ClearRuleFieldType = {
+    type: string;
+    payload?: null
 }
 
-export type ActionType =  SetRuleType | DeleteRuleType | InputOnType | InputOffType
+export type ButtonRulesStateType = any | {
+    stylelist: StylelistType[] | Array<any> ;
+    isInputFormOpened: boolean;
+    
+}
+
+export type ActionType =  SetRuleType | DeleteRuleType | InputOnType | InputOffType | ClearRuleFieldType
 
 
 export type StylelistType = {

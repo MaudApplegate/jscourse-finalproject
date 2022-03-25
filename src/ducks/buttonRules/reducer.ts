@@ -1,4 +1,4 @@
-import { INPUT_ON, INPUT_OFF, SET_RULE, DELETE_RULE } from './actions';
+import { INPUT_ON, INPUT_OFF, SET_RULE, DELETE_RULE, CLEAR_RULE_FIELD } from './actions';
 import { ActionType, ButtonRulesStateType, StylelistType } from './types';
 
 export const initialButtonState: ButtonRulesStateType = {
@@ -21,8 +21,8 @@ export const buttonReducer = (state = initialButtonState, action : ActionType) =
         ...state,
         stylelist: state.stylelist.filter((el: StylelistType) => el.id !== action.payload),
       };
-
+    case CLEAR_RULE_FIELD: return {stylelist: []};
     default:
-      return state;
+      return {...state};
   }
 };

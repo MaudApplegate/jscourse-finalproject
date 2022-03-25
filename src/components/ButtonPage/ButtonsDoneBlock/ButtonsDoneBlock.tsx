@@ -10,6 +10,7 @@ import {
 import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { StateType } from '../../../redux/types';
+import { DeleteButton } from './DeleteButton';
 
 const ButtonStyled = styled.button<PropsStyled>`
   ${(props: any) => props.propsstyle}
@@ -27,6 +28,8 @@ const ButtonsDoneBlock: React.FC<Props> = ({ buttonsList, actionGetList }) => {
     actionGetList();
   }, []);
 
+  const buttonChangeHandler = () => {};
+
   return (
     <div className="firstblock">
       <ul>
@@ -34,7 +37,10 @@ const ButtonsDoneBlock: React.FC<Props> = ({ buttonsList, actionGetList }) => {
         {buttonsList &&
           buttonsList.map((item: ButtonList) => (
             <li key={item.id}>
-              <ButtonStyled propsstyle={item}>Example</ButtonStyled>
+              <ButtonStyled propsstyle={item} onClick={buttonChangeHandler}>
+                Example
+              </ButtonStyled>
+              <DeleteButton id={item.id} />
             </li>
           ))}
       </ul>

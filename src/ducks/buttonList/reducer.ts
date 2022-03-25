@@ -1,11 +1,11 @@
-import { PUSH_BUTTON_FAILED, PUSH_BUTTON_SUCCEED } from '../buttonPush/actions';
+import { DELETE_BUTTON, PUSH_BUTTON_FAILED, PUSH_BUTTON_SUCCEED } from '../buttonPush/actions';
 
 import {
   GET_BUTTONS_FAILED,
   GET_BUTTONS_LOADING,
   GET_BUTTONS_SUCCEED,
 } from './actions';
-import { ActionType, ButtonListStateType } from './types';
+import { ActionType, ButtonList, ButtonListStateType } from './types';
 
 export const initialButtonListState: ButtonListStateType = {
   data: [],
@@ -29,6 +29,9 @@ export const buttonsListReducer = (state = initialButtonListState, action : Acti
     }
     case PUSH_BUTTON_FAILED: {
       return { ...state, error: action.payload };
+    }
+    case DELETE_BUTTON: {
+      return {...state}
     }
     default:
       return state;

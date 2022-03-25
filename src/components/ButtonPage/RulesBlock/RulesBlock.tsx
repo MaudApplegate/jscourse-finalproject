@@ -5,7 +5,10 @@ import { ThunkDispatch } from 'redux-thunk';
 import { useId } from 'react-id-generator';
 
 import { pushButtonAction } from '../../../ducks/buttonPush/actions';
-import { ACTION_INPUT_ON } from '../../../ducks/buttonRules/actions';
+import {
+  ACTION_CLEAR_RULE_FIELD,
+  ACTION_INPUT_ON,
+} from '../../../ducks/buttonRules/actions';
 import {
   isInputFormOpenedSelector,
   stylelistSelector,
@@ -24,6 +27,7 @@ type Props = {
   actionPushButton: any;
   isInputOpened: boolean;
   actionInputOn: () => void;
+  actionClearRuleField: () => void;
 };
 
 export type ButtonToPush = {
@@ -37,6 +41,7 @@ const RulesBlock: React.FC<Props> = ({
   isInputOpened,
   actionPushButton,
   actionInputOn,
+  actionClearRuleField,
 }) => {
   const addRuleHandler = () => {
     actionInputOn();
@@ -54,6 +59,7 @@ const RulesBlock: React.FC<Props> = ({
     });
 
     actionPushButton(buttonToPush);
+    actionClearRuleField();
   };
 
   return (
@@ -82,6 +88,9 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<{}, void, Action>) => ({
   },
   actionInputOn: () => {
     dispatch(ACTION_INPUT_ON());
+  },
+  actionClearRuleField: () => {
+    dispatch(ACTION_CLEAR_RULE_FIELD());
   },
 });
 

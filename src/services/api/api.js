@@ -11,3 +11,7 @@ export const getButtons = async () => {
 export const pushButton = async (data) => {
   await API.post('/buttons', data);
 };
+
+export const deleteButton = async (id) => {
+  await API.delete('/buttons', { data : id});
+};

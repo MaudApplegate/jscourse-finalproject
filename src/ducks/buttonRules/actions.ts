@@ -1,4 +1,4 @@
-import { DeleteRuleType, InputOffType, InputOnType, SetRuleType, StylelistType } from "./types";
+import { ClearRuleFieldType, DeleteRuleType, InputOffType, InputOnType, SetRuleType, StylelistType } from "./types";
 
 export const SET_RULE = 'SET_RULE';
 export const DELETE_RULE = 'DELETE_RULE';
@@ -23,3 +23,9 @@ export const ACTION_INPUT_ON = (): InputOnType => ({
 export const ACTION_INPUT_OFF = (): InputOffType => ({
   type: INPUT_OFF,
 });
+
+export const CLEAR_RULE_FIELD = 'CLEAR_RULE_FIELD';
+
+export const ACTION_CLEAR_RULE_FIELD = (): ClearRuleFieldType => ({
+  type: CLEAR_RULE_FIELD
+})
