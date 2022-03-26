@@ -13,7 +13,16 @@ export const RulesList: React.FC = () => {
       <ul>
         {list.map((item: StylelistType) => (
           <li key={item.id}>
-            {item.stylename} : {item.stylevalue}
+            {item.stylename.startsWith('&') ? (
+              <>
+                {item.stylename} :{JSON.stringify(item.stylevalue)}
+              </>
+            ) : (
+              <>
+                {item.stylename} : {item.stylevalue}{' '}
+              </>
+            )}
+
             <DeleteButton id={item.id} />
           </li>
         ))}
