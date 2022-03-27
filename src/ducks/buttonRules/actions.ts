@@ -30,16 +30,9 @@ export const ACTION_CLEAR_RULE_FIELD = (): ClearRuleFieldType => ({
   type: CLEAR_RULE_FIELD
 })
 
-// export const SET_RULES_FROM_PATCH = 'SET_RULES_FROM_PATCH';
+export const SET_RULES_FROM_PATCH = 'SET_RULES_FROM_PATCH';
 
-// export const ACTION_SET_RULES_FROM_PATCH = (payload :any) => ({
-//   type: SET_RULES_FROM_PATCH,
-//   payload
-// })
-
-export const SET_ID_FROM_SERVER = 'SET_ID_FROM_SERVER';
-
-export const ACTION_SET_ID_FROM_SERVER = (payload: any) => ({
-  type: SET_ID_FROM_SERVER,
+export const ACTION_SET_RULES_FROM_PATCH = (payload :any) => ({
+  type: SET_RULES_FROM_PATCH,
   payload
 })

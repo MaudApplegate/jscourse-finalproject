@@ -6,39 +6,40 @@ import { StylelistType } from '../../../ducks/buttonRules/types';
 
 export const RulesList: React.FC = () => {
   const list = useSelector(stylelistSelector);
+  const listArr: any = Object.entries(list);
 
   return (
     <div>
-      {list.length === 0 && <h3>No rules yet...</h3>}
+      {listArr.length === 0 && <h3>No rules yet...</h3>}
       <ul>
-        {list.map((item: StylelistType) => (
-          <li key={item.id}>
-            {item.stylename.startsWith('&') ? (
-              <>
-                {item.stylename} :{JSON.stringify(item.stylevalue)}
-              </>
-            ) : (
-              <>
-                {item.stylename} : {item.stylevalue}{' '}
-              </>
-            )}
-
-            <DeleteButton id={item.id} />
-          </li>
-        ))}
+        {listArr.map(([key, value]: any) => {
+          if (key !== 'id' && key !== 'name') {
+            return (
+              <li key={key}>
+                {key} :
+                {key.startsWith('&') ? (
+                  <> {JSON.stringify(value)} </>
+                ) : (
+                  <>{value} </>
+                )}
+                <DeleteButton stylename={key} />
+              </li>
+            );
+          }
+        })}
       </ul>
     </div>
   );
 };
 
 type PropsDeleteBtn = {
-  id: string;
+  stylename: string;
 };
 
-export const DeleteButton: React.FC<PropsDeleteBtn> = ({ id }) => {
+export const DeleteButton: React.FC<PropsDeleteBtn> = ({ stylename }) => {
   const dispatch = useDispatch();
   const deleteHandler = () => {
-    dispatch(ACTION_DELETE_RULE(id));
+    dispatch(ACTION_DELETE_RULE(stylename));
   };
   return <button onClick={deleteHandler}>x</button>;
 };

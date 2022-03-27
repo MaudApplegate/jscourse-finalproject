@@ -29,7 +29,7 @@ export type ButtonRulesStateType = any | {
     
 }
 
-export type ActionType =  SetRuleType | DeleteRuleType | InputOnType | InputOffType | ClearRuleFieldType
+export type ActionType =  SetRuleType | DeleteRuleType | InputOnType | InputOffType | ClearRuleFieldType | any
 
 
 export type StylelistType = {

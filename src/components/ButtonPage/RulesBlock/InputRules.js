@@ -1,4 +1,3 @@
-import { useId } from 'react-id-generator';
 import { useDispatch } from 'react-redux';
 
 import {
@@ -8,7 +7,6 @@ import {
 
 export const InputForm = () => {
   const dispatch = useDispatch();
-  const [nextId] = useId();
 
   const closeInputHandler = () => {
     dispatch(ACTION_INPUT_OFF());
@@ -18,13 +16,7 @@ export const InputForm = () => {
     e.preventDefault();
     const name = e.target.elements.stylename.value;
     const value = e.target.elements.stylevalue.value;
-    dispatch(
-      ACTION_SET_RULE({
-        id: nextId,
-        stylename: name,
-        stylevalue: value,
-      })
-    );
+    dispatch(ACTION_SET_RULE({ name: name, value: value }));
     dispatch(ACTION_INPUT_OFF());
   };
 

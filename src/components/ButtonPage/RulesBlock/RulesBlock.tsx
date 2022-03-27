@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
-import { useId } from 'react-id-generator';
 
 import { pushButtonAction } from '../../../ducks/buttonPush/actions';
 import {
@@ -10,7 +9,6 @@ import {
   ACTION_INPUT_ON,
 } from '../../../ducks/buttonRules/actions';
 import {
-  globalIdSelector,
   isInputFormOpenedSelector,
   stylelistSelector,
 } from '../../../ducks/buttonRules/selectors';
@@ -22,10 +20,7 @@ import { ButtonList } from '../../../ducks/buttonList/types';
 import { InputForm } from './InputRules';
 import { RulesDisplay } from './RulesDisplay';
 import { RulesList } from './RulesList';
-import {
-  ACTION_PATCH_BUTTON,
-  patchButtonAction,
-} from '../../../ducks/buttonPush/buttonPatchAction';
+import { patchButtonAction } from '../../../ducks/buttonPush/buttonPatchAction';
 
 type Props = {
   buttonRules: StylelistType[];
@@ -33,7 +28,6 @@ type Props = {
   isInputOpened: boolean;
   actionInputOn: () => void;
   actionClearRuleField: () => void;
-  globalId: string | null;
   actionPatchButton: any;
 };
 
@@ -49,29 +43,24 @@ const RulesBlock: React.FC<Props> = ({
   actionPushButton,
   actionInputOn,
   actionClearRuleField,
-  globalId,
   actionPatchButton,
 }) => {
   const addRuleHandler = () => {
     actionInputOn();
   };
 
-  const [nextId] = useId();
-
   const submitBtnHandler = () => {
-    const buttonToPush: ButtonToPush = {};
+    console.log(buttonRules);
 
-    buttonToPush.name = 'Example';
+    function getRandomNum() {
+      return Math.floor(Math.random() * 10000000);
+    }
 
-    buttonRules.map((i: StylelistType) => {
-      buttonToPush[i.stylename] = i.stylevalue;
-    });
-
-    if (globalId) {
-      buttonToPush.id = globalId;
-      actionPatchButton(buttonToPush);
+    if ('id' in buttonRules) {
+      actionPatchButton(buttonRules);
     } else {
-      buttonToPush.id = nextId;
+      const buttonData = { id: getRandomNum(), name: 'button' };
+      const buttonToPush = { ...buttonData, ...buttonRules };
       actionPushButton(buttonToPush);
     }
 
@@ -96,7 +85,6 @@ const RulesBlock: React.FC<Props> = ({
 const mapStateToProps = (state: StateType) => ({
   buttonRules: stylelistSelector(state),
   isInputOpened: isInputFormOpenedSelector(state),
-  globalId: globalIdSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<{}, void, Action>) => ({
