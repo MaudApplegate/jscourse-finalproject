@@ -1,9 +1,6 @@
+import { ActionType, ButtonInitialState, ButtonsActions } from './types';
 
-
-
-import { ActionType, ButtonsActions } from './types';
-
-export const initialButtonListState: any = {
+export const initialButtonListState: ButtonInitialState = {
   data: [],
   error: null,
   isLoading: false,

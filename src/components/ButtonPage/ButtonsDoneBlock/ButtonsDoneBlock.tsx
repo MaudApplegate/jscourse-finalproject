@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
 import { connect } from 'react-redux';
+
 import { getButtonsAction } from '../../../ducks/buttonList/actions';
 import { buttonsListSelector } from '../../../ducks/buttonList/selectors';
 
 import { ButtonListType } from '../../../ducks/buttonList/types';
-import { AnyAction } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
 import { StateType } from '../../../redux/types';
+
 import { DeleteButton } from './DeleteButton';
 import { ButtonDownLoad } from './Button';
 
