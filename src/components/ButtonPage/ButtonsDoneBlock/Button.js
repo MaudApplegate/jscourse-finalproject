@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { buttonsListSelector } from '../../../ducks/buttonList/selectors';
 import {
   ACTION_CLEAR_RULE_FIELD,
-  ACTION_SET_RULES_FROM_PATCH,
+  ACTION_PATCH_RULES,
 } from '../../../ducks/buttonRules/actions';
 
 const ButtonStyled = styled.button`
@@ -17,7 +17,7 @@ export const ButtonDownLoad = ({ id, propsstyle }) => {
   const buttonChangeHandler = () => {
     dispatch(ACTION_CLEAR_RULE_FIELD());
     const elem = ButtonListData.find((el) => el.id === id);
-    dispatch(ACTION_SET_RULES_FROM_PATCH(elem));
+    dispatch(ACTION_PATCH_RULES(elem));
   };
 
   return (

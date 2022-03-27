@@ -3,18 +3,15 @@ import { connect } from 'react-redux';
 import { getButtonsAction } from '../../../ducks/buttonList/actions';
 import { buttonsListSelector } from '../../../ducks/buttonList/selectors';
 
-import {
-  ButtonList,
-  ButtonListStateType,
-} from '../../../ducks/buttonList/types';
-import { Action } from 'redux';
+import { ButtonListType } from '../../../ducks/buttonList/types';
+import { AnyAction } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { StateType } from '../../../redux/types';
 import { DeleteButton } from './DeleteButton';
 import { ButtonDownLoad } from './Button';
 
 type Props = {
-  buttonsList: ButtonList[];
+  buttonsList: ButtonListType[];
   actionGetList: () => void;
 };
 
@@ -28,7 +25,7 @@ const ButtonsDoneBlock: React.FC<Props> = ({ buttonsList, actionGetList }) => {
       <ul>
         {!buttonsList && <h2>No content...</h2>}
         {buttonsList &&
-          buttonsList.map((item: ButtonList) => (
+          buttonsList.map((item: ButtonListType) => (
             <li key={item.id}>
               <ButtonDownLoad id={item.id} propsstyle={item} />
               <DeleteButton id={item.id} />
@@ -44,7 +41,7 @@ const mapStateToProps = (state: StateType) => ({
 });
 
 const mapDispatchToProps = (
-  dispatch: ThunkDispatch<ButtonListStateType, void, Action>
+  dispatch: ThunkDispatch<StateType, void, AnyAction>
 ) => ({
   actionGetList: () => {
     dispatch(getButtonsAction());

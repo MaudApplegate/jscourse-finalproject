@@ -1,40 +1,35 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Action } from 'redux';
+import { AnyAction } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 
-import { pushButtonAction } from '../../../ducks/buttonPush/actions';
 import {
   ACTION_CLEAR_RULE_FIELD,
   ACTION_INPUT_ON,
 } from '../../../ducks/buttonRules/actions';
+import {
+  patchButtonAction,
+  pushButtonAction,
+} from '../../../ducks/buttonList/actions';
 import {
   isInputFormOpenedSelector,
   stylelistSelector,
 } from '../../../ducks/buttonRules/selectors';
 
 import { StateType } from '../../../redux/types';
-import { StylelistType } from '../../../ducks/buttonRules/types';
-import { ButtonList } from '../../../ducks/buttonList/types';
+import { ButtonListType } from '../../../ducks/buttonList/types';
 
 import { InputForm } from './InputRules';
 import { RulesDisplay } from './RulesDisplay';
 import { RulesList } from './RulesList';
-import { patchButtonAction } from '../../../ducks/buttonPush/buttonPatchAction';
 
 type Props = {
-  buttonRules: StylelistType[];
-  actionPushButton: any;
+  buttonRules: any;
   isInputOpened: boolean;
+  actionPushButton: (buttonToPush: ButtonListType) => void;
   actionInputOn: () => void;
   actionClearRuleField: () => void;
-  actionPatchButton: any;
-};
-
-export type ButtonToPush = {
-  id?: string;
-  name?: string;
-  [key: string]: any;
+  actionPatchButton: (buttonRules: ButtonListType) => void;
 };
 
 const RulesBlock: React.FC<Props> = ({
@@ -87,8 +82,10 @@ const mapStateToProps = (state: StateType) => ({
   isInputOpened: isInputFormOpenedSelector(state),
 });
 
-const mapDispatchToProps = (dispatch: ThunkDispatch<{}, void, Action>) => ({
-  actionPushButton: (data: ButtonList) => {
+const mapDispatchToProps = (
+  dispatch: ThunkDispatch<StateType, void, AnyAction>
+) => ({
+  actionPushButton: (data: ButtonListType) => {
     dispatch(pushButtonAction(data));
   },
   actionInputOn: () => {
@@ -97,7 +94,7 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<{}, void, Action>) => ({
   actionClearRuleField: () => {
     dispatch(ACTION_CLEAR_RULE_FIELD());
   },
-  actionPatchButton: (data: any) => {
+  actionPatchButton: (data: ButtonListType) => {
     dispatch(patchButtonAction(data));
   },
 });

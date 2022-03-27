@@ -1,6 +1,29 @@
+import { ButtonListType } from "../buttonList/types";
+
+
+export type RulesListType = {
+    [key: string]: string
+} 
+
+export type RulesInitialState = {
+    stylelist: RulesListType,
+    isInputFormOpened: boolean
+}
+
+export enum RuleActions {
+    SET_RULE = 'SET_RULE',
+    DELETE_RULE = 'DELETE_RULE',
+    INPUT_ON = 'INPUT_ON',
+    INPUT_OFF = 'INPUT_OFF',
+    CLEAR_RULE_FIELD = 'CLEAR_RULE_FIELD',
+    PATCH_RULES = 'PATCH_RULES'
+}
+
+export type ActionType = SetRuleType | DeleteRuleType | InputOnType | InputOffType | ClearRuleFieldType | PatchRulesType;
+
 export type SetRuleType = {
     type: string;
-    payload: StylelistType
+    payload: {name: string, value: string}
 }
 
 export type DeleteRuleType = {
@@ -10,31 +33,63 @@ export type DeleteRuleType = {
 
 export type InputOnType = {
     type: string;
-    payload?: null
+    payload?: any
 }
 
 export type InputOffType = {
     type: string;
-    payload?: null
+    payload?: any
 }
 
 export type ClearRuleFieldType = {
     type: string;
-    payload?: null
+    payload?: any
 }
 
-export type ButtonRulesStateType = any | {
-    stylelist: StylelistType[] | Array<any> ;
-    isInputFormOpened: boolean;
+export type PatchRulesType = {
+    type: string;
+    payload: ButtonListType
+}
+
+
+
+// export type SetRuleType = {
+//     type: string;
+//     payload: StylelistType
+// }
+
+// export type DeleteRuleType = {
+//     type:string;
+//     payload: string
+// }
+
+// export type InputOnType = {
+//     type: string;
+//     payload?: null
+// }
+
+// export type InputOffType = {
+//     type: string;
+//     payload?: null
+// }
+
+// export type ClearRuleFieldType = {
+//     type: string;
+//     payload?: null
+// }
+
+// export type ButtonRulesStateType = any | {
+//     stylelist: StylelistType[] | Array<any> ;
+//     isInputFormOpened: boolean;
     
-}
+// }
 
-export type ActionType =  SetRuleType | DeleteRuleType | InputOnType | InputOffType | ClearRuleFieldType | any
+// export type ActionType =  SetRuleType | DeleteRuleType | InputOnType | InputOffType | ClearRuleFieldType | any
 
 
-export type StylelistType = {
-    id: string;
-    stylename: string;
-    stylevalue: string;
+// export type StylelistType = {
+//     id: string;
+//     stylename: string;
+//     stylevalue: string;
 
-}
+// }

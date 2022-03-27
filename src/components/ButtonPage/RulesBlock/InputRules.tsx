@@ -12,7 +12,7 @@ export const InputForm = () => {
     dispatch(ACTION_INPUT_OFF());
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     const name = e.target.elements.stylename.value;
     const value = e.target.elements.stylevalue.value;

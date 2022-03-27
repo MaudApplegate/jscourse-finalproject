@@ -1,30 +1,30 @@
-import { INPUT_ON, INPUT_OFF, SET_RULE, DELETE_RULE, CLEAR_RULE_FIELD, SET_RULES_FROM_PATCH } from './actions';
-import { ActionType, ButtonRulesStateType, StylelistType } from './types';
+import { ActionType, RuleActions, RulesInitialState } from "./types";
 
-export const initialButtonState: ButtonRulesStateType = {
+
+export const initialButtonState: RulesInitialState = {
   stylelist: {},
   isInputFormOpened: false,
 };
 
-export const buttonReducer = (state = initialButtonState, action : ActionType | any) => {
+export const buttonReducer = (state = initialButtonState, action : ActionType): RulesInitialState => {
   switch (action.type) {
-    case INPUT_ON:
+    case RuleActions.INPUT_ON:
       return { ...state, isInputFormOpened: true };
-    case INPUT_OFF:
+    case RuleActions.INPUT_OFF:
       return { ...state, isInputFormOpened: false };
 
-    case SET_RULE:
+    case RuleActions.SET_RULE:
       state.stylelist[action.payload.name] = action.payload.value;
       return { ...state, stylelist : {...state.stylelist}};
 
-    case DELETE_RULE:
+    case RuleActions.DELETE_RULE:
       delete state.stylelist[action.payload]
       return {
         ...state,
         stylelist : {...state.stylelist}
       };
-    case CLEAR_RULE_FIELD: return {stylelist: [], globalId: null};
-    case SET_RULES_FROM_PATCH: return {stylelist: action.payload, isInputFormOpened: false}
+    case RuleActions.CLEAR_RULE_FIELD: return initialButtonState;
+    case RuleActions.PATCH_RULES: return {stylelist: action.payload, isInputFormOpened: false}
     default:
       return {...state};
   }
