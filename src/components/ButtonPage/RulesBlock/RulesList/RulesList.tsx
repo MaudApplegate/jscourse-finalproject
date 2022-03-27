@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { ACTION_DELETE_RULE } from '../../../ducks/buttonRules/actions';
-import { stylelistSelector } from '../../../ducks/buttonRules/selectors';
+import { ACTION_DELETE_RULE } from '../../../../ducks/buttonRules/actions';
+import { stylelistSelector } from '../../../../ducks/buttonRules/selectors';
 
 export const RulesList: React.FC = () => {
   const list = useSelector(stylelistSelector);

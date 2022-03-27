@@ -23,7 +23,7 @@ export const buttonReducer = (state = initialButtonState, action : ActionType): 
         ...state,
         stylelist : {...state.stylelist}
       };
-    case RuleActions.CLEAR_RULE_FIELD: return initialButtonState;
+    case RuleActions.CLEAR_RULE_FIELD: return {stylelist: {}, isInputFormOpened: false};
     case RuleActions.PATCH_RULES: return {stylelist: action.payload, isInputFormOpened: false}
     default:
       return {...state};

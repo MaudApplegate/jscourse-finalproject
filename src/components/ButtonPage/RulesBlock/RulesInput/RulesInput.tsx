@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import {
   ACTION_INPUT_OFF,
   ACTION_SET_RULE,
-} from '../../../ducks/buttonRules/actions';
+} from '../../../../ducks/buttonRules/actions';
 
-export const InputForm = () => {
+export const RulesInput = () => {
   const dispatch = useDispatch();
 
   const closeInputHandler = () => {

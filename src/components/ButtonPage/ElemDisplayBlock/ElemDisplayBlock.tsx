@@ -10,7 +10,7 @@ import { ButtonListType } from '../../../ducks/buttonList/types';
 import { StateType } from '../../../redux/types';
 
 import { DeleteButton } from './DeleteButton';
-import { ButtonDownLoad } from './Button';
+import { ButtonDownLoad } from './SingleElem/SingleElem';
 
 type Props = {
   buttonsList: ButtonListType[];

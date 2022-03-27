@@ -19,9 +19,9 @@ import {
 import { StateType } from '../../../redux/types';
 import { ButtonListType } from '../../../ducks/buttonList/types';
 
-import { InputForm } from './InputRules';
-import { RulesDisplay } from './RulesDisplay';
-import { RulesList } from './RulesList';
+import { RulesInput } from './RulesInput/RulesInput';
+import { RulesDisplay } from './RulesDisplay/RulesDisplay';
+import { RulesList } from './RulesList/RulesList';
 
 type Props = {
   buttonRules: any;
@@ -72,7 +72,7 @@ const RulesBlock: React.FC<Props> = ({
         <button onClick={addRuleHandler}>Add rule</button>
         <button onClick={submitBtnHandler}>Submit</button>
       </div>
-      {isInputOpened && <InputForm />}
+      {isInputOpened && <RulesInput />}
     </div>
   );
 };

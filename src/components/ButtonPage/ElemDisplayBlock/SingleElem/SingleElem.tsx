@@ -5,10 +5,10 @@ import styled from 'styled-components';
 import {
   ACTION_CLEAR_RULE_FIELD,
   ACTION_PATCH_RULES,
-} from '../../../ducks/buttonRules/actions';
-import { buttonsListSelector } from '../../../ducks/buttonList/selectors';
+} from '../../../../ducks/buttonRules/actions';
+import { buttonsListSelector } from '../../../../ducks/buttonList/selectors';
 
-import { ButtonListType } from '../../../ducks/buttonList/types';
+import { ButtonListType } from '../../../../ducks/buttonList/types';
 
 const ButtonStyled = styled.button<PropsStyled>`
   ${(props) => props.propsstyle}
