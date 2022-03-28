@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 import { auth } from '../../../services/firebase/firebase';
+
+import { StyledForm, StyledLink } from '../styled';
 
 export const SignIn: React.FC = () => {
   const [values, setValues] = useState({ email: '', password: '' });
@@ -16,19 +19,21 @@ export const SignIn: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await auth.signInWithEmailAndPassword(values.email, values.password);
-    console.log('haha');
     navigate('/buttons');
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <StyledForm onSubmit={handleSubmit}>
+      <StyledLink to="/signup">Sign Up</StyledLink>
       <h2>Sign In</h2>
+      <label> Email: </label>
       <input
         type="email"
         name="email"
         onChange={handleChange}
         value={values.email}
       />
+      <label> Password: </label>
       <input
         type="password"
         name="password"
@@ -36,7 +41,6 @@ export const SignIn: React.FC = () => {
         value={values.password}
       />
       <button>Submit</button>
-      <Link to="/signup">Sign Up</Link>
-    </form>
+    </StyledForm>
   );
 };

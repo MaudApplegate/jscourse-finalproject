@@ -9,8 +9,8 @@ import { buttonsListSelector } from '../../../ducks/buttonList/selectors';
 import { ButtonListType } from '../../../ducks/buttonList/types';
 import { StateType } from '../../../redux/types';
 
-import { DeleteButton } from './DeleteButton';
-import { ButtonDownLoad } from './SingleElem/SingleElem';
+import { DeleteElem } from './DeleteElem';
+import { SingleElem } from './SingleElem/SingleElem';
 
 type Props = {
   buttonsList: ButtonListType[];
@@ -29,8 +29,8 @@ const ElemDisplayBlock: React.FC<Props> = ({ buttonsList, actionGetList }) => {
         {buttonsList &&
           buttonsList.map((item: ButtonListType) => (
             <li key={item.id}>
-              <ButtonDownLoad id={item.id} propsstyle={item} />
-              <DeleteButton id={item.id} />
+              <SingleElem id={item.id} propsstyle={item} />
+              <DeleteElem id={item.id} />
             </li>
           ))}
       </ul>

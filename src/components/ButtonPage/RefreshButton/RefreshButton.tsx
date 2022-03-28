@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { ACTION_CLEAR_RULE_FIELD } from '../../ducks/buttonRules/actions';
+import { ACTION_CLEAR_RULE_FIELD } from '../../../ducks/buttonRules/actions';
 
 export const RefreshButton: React.FC = () => {
   const dispatch = useDispatch();

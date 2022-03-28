@@ -2,8 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
-import { auth } from '../services/firebase/firebase';
-import { userSelector } from '../ducks/auth/selectors';
+import { auth } from '../../services/firebase/firebase';
+import { userSelector } from '../../ducks/auth/selectors';
 
 type Props = {
   children: React.ReactNode;

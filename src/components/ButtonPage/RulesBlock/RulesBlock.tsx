@@ -46,8 +46,6 @@ const RulesBlock: React.FC<Props> = ({
   };
 
   const submitBtnHandler = () => {
-    console.log(buttonRules);
-
     function getRandomNum() {
       return Math.floor(Math.random() * 10000000);
     }

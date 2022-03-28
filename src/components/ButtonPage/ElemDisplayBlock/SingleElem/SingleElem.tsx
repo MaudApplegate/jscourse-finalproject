@@ -21,14 +21,13 @@ type Props = {
   propsstyle: ButtonListType;
 };
 
-export const ButtonDownLoad: React.FC<Props> = ({ id, propsstyle }) => {
+export const SingleElem: React.FC<Props> = ({ id, propsstyle }) => {
   const ButtonListData = useSelector(buttonsListSelector);
   const dispatch = useDispatch();
 
   const buttonChangeHandler = () => {
     dispatch(ACTION_CLEAR_RULE_FIELD());
     const elem: any = ButtonListData.find((el) => el.id === id);
-    console.log(elem);
     dispatch(ACTION_PATCH_RULES(elem));
   };
 
