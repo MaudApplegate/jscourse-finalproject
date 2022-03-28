@@ -56,9 +56,6 @@ function App() {
     auth.onAuthStateChanged((currentUser) => {
       if (currentUser) {
         dispatch(ACTION_SAVE_USER(currentUser.refreshToken));
-        window.onunload = async () => {
-          await auth.signOut();
-        };
       } else {
         dispatch(ACTION_SAVE_USER(undefined));
       }

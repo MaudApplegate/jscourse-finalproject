@@ -12,10 +12,32 @@ import { StateType } from '../../../redux/types';
 import { DeleteElem } from './DeleteElem';
 import { SingleElem } from './SingleElem/SingleElem';
 
+import styled from 'styled-components';
+
 type Props = {
   buttonsList: ButtonListType[];
   actionGetList: () => void;
 };
+
+const StyledDiv = styled.div`
+
+width: 100%;
+min-height: 300px;
+margin auto;
+border: solid 6px #352371;
+border-radius: 20px;
+background: white;
+box-sizing: border-box;
+text-align: center;
+
+li {
+  list-style: none;
+  margin: 15px auto;
+  display: inline-grid;
+  grid-template-columns: 400px 32px;
+  justify-items: center;
+}
+`;
 
 const ElemDisplayBlock: React.FC<Props> = ({ buttonsList, actionGetList }) => {
   useEffect(() => {
@@ -23,7 +45,7 @@ const ElemDisplayBlock: React.FC<Props> = ({ buttonsList, actionGetList }) => {
   }, []);
 
   return (
-    <div className="firstblock">
+    <StyledDiv className="firstblock">
       <ul>
         {!buttonsList && <h2>No content...</h2>}
         {buttonsList &&
@@ -34,7 +56,7 @@ const ElemDisplayBlock: React.FC<Props> = ({ buttonsList, actionGetList }) => {
             </li>
           ))}
       </ul>
-    </div>
+    </StyledDiv>
   );
 };
 

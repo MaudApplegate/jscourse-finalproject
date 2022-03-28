@@ -22,7 +22,64 @@ import { ButtonListType } from '../../../ducks/buttonList/types';
 import { RulesInput } from './RulesInput/RulesInput';
 import { RulesDisplay } from './RulesDisplay/RulesDisplay';
 import { RulesList } from './RulesList/RulesList';
-import { RulesListType } from '../../../ducks/buttonRules/types';
+
+import styled from 'styled-components';
+
+const StyledDiv = styled.div`
+  margin: 10px auto;
+  width: 100%;
+  position: relative;
+`;
+
+const StyledDivDisplay = styled.div`
+  width: 50%;
+  min-height: 200px;
+  float: left;
+  text-align: center;
+  border: solid 6px #352371;
+  border-radius: 20px;
+  background: white;
+  box-sizing: border-box;
+
+  button {
+    margin: 40px 20px;
+  }
+`;
+
+const StyledDivList = styled.div`
+  width: 48%;
+  min-height: 200px;
+  float: right;
+  position: relative;
+`;
+
+const StyledBtnCont = styled.div`
+  width: 100%;
+  height: 30px;
+  position: absolute;
+  top: 100%;
+  bottom: -30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    width: 80px;
+    height: 30px;
+    margin: auto 15px;
+    border: solid 3px #352371;
+    border-radius: 2px;
+    background-color: #ffffff;
+    color: #352371;
+    font-weight: 600;
+    cursor: pointer;
+
+    &: hover {
+      background: #665d83;
+      color: white;
+    }
+  }
+`;
 
 type Props = {
   buttonRules: any;
@@ -62,17 +119,19 @@ const RulesBlock: React.FC<Props> = ({
   };
 
   return (
-    <div className="secondblock">
-      <div className="rulesdisplay">
+    <StyledDiv>
+      <StyledDivDisplay>
         <RulesDisplay />
-      </div>
-      <div className="rules">
+      </StyledDivDisplay>
+      <StyledDivList>
         <RulesList />
-        <button onClick={addRuleHandler}>Add rule</button>
-        <button onClick={submitBtnHandler}>Submit</button>
-      </div>
+        <StyledBtnCont>
+          <button onClick={addRuleHandler}>Add rule</button>
+          <button onClick={submitBtnHandler}>Submit</button>
+        </StyledBtnCont>
+      </StyledDivList>
       {isInputOpened && <RulesInput />}
-    </div>
+    </StyledDiv>
   );
 };
 

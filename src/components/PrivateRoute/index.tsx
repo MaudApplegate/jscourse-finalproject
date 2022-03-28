@@ -4,6 +4,17 @@ import { Navigate } from 'react-router-dom';
 
 import { auth } from '../../services/firebase/firebase';
 import { userSelector } from '../../ducks/auth/selectors';
+import styled from 'styled-components';
+
+const StyledButton = styled.button`
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: #b4a9d7;
+  &:hover {
+    background: #665d83;
+  }
+`;
 
 type Props = {
   children: React.ReactNode;
@@ -18,7 +29,7 @@ const Private: React.FC<Props> = ({ children }) => {
 
   return user ? (
     <>
-      <button onClick={logOut}> Log Out </button>
+      <StyledButton onClick={logOut}> Log Out </StyledButton>
       {children}
     </>
   ) : (
