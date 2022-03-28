@@ -4,7 +4,7 @@ export type ButtonListType = {
     id: string;
     name: string;
     [key: string]: string
-}
+} 
 
 export type ButtonInitialState = {
     data: ButtonListType[];

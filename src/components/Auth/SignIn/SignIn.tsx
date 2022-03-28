@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth } from '../../../context/firebase';
+import { auth } from '../../../services/firebase/firebase';
 
 export const SignIn: React.FC = () => {
   const [values, setValues] = useState({ email: '', password: '' });

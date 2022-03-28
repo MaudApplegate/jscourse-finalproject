@@ -22,6 +22,7 @@ import { ButtonListType } from '../../../ducks/buttonList/types';
 import { RulesInput } from './RulesInput/RulesInput';
 import { RulesDisplay } from './RulesDisplay/RulesDisplay';
 import { RulesList } from './RulesList/RulesList';
+import { RulesListType } from '../../../ducks/buttonRules/types';
 
 type Props = {
   buttonRules: any;
