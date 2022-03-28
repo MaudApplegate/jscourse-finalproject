@@ -1,9 +1,19 @@
+import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import {
   ACTION_INPUT_OFF,
   ACTION_SET_RULE,
 } from '../../../../ducks/buttonRules/actions';
+
+type FormSubmitType = {
+  target: {
+    elements: {
+      stylename: { value: string };
+      stylevalue: { value: string };
+    };
+  };
+};
 
 export const RulesInput = () => {
   const dispatch = useDispatch();
@@ -12,7 +22,9 @@ export const RulesInput = () => {
     dispatch(ACTION_INPUT_OFF());
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (
+    e: React.FormEvent<HTMLFormElement> & FormSubmitType
+  ) => {
     e.preventDefault();
     const name = e.target.elements.stylename.value;
     const value = e.target.elements.stylevalue.value;

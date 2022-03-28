@@ -17,7 +17,7 @@ type Props = {
   actionGetList: () => void;
 };
 
-const ButtonsDoneBlock: React.FC<Props> = ({ buttonsList, actionGetList }) => {
+const ElemDisplayBlock: React.FC<Props> = ({ buttonsList, actionGetList }) => {
   useEffect(() => {
     actionGetList();
   }, []);
@@ -50,4 +50,4 @@ const mapDispatchToProps = (
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ButtonsDoneBlock);
+export default connect(mapStateToProps, mapDispatchToProps)(ElemDisplayBlock);
